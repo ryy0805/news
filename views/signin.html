@@ -39,6 +39,20 @@
     </div>
     <script src="/node_modules/jquery/dist/jquery.js"></script>
     <script>
+        $("#signin_form").on("submit",function(e) {
+            e.preventDefault();
+            var formdata = $(this).serialize();
+            // console.log(formdata);
+
+            $.post("/signin",formdata,function(data) {
+                console.log(data);
+                if(data.code == 200) {
+                    window.location.href ="/";
+                }else {
+                    alert(data.msg);
+                }
+            })
+        }) 
     </script>
 </body>
 
